@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+
+
+
 
 
 // Utility to add JWT
@@ -95,3 +98,8 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+
+
+
+// axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
