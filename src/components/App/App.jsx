@@ -1,48 +1,82 @@
-import { ContactsList } from '../ContactList/ContactList';
-import { Form } from '../Form/Form';
-import { Filter } from '../Filter/Filter';
-import { Dna } from 'react-loader-spinner';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useSelector } from 'react-redux';
-import css from './App.module.css';
+import { useEffect } from 'react';
+// import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from '../Layout/Layout';
+import { PrivateRoute } from '../PrivateRoute';
+import { RestrictedRoute } from '../RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from '../../hooks/useAuth';
 
-export function App() {
-  const loading = useSelector(state => state.contacts.isLoading);
-  const error = useSelector(state => state.contacts.error);
+// const HomePage = lazy(() => import('../../pages/Home/HomePage'));
+// const RegisterPage = lazy(() => import('../../pages/Register/RegisterPage'));
+// const LoginPage = lazy(() => import('../../pages/Login/LoginPage'));
+// const ContactsPage = lazy(() => import('../../pages/Contacts/ContactsPage'));
 
-  if (error) {
-    toast.error(`There is the error "${error}". Please, try again later`, {
-      position: 'top-left',
-      autoClose: 3000,
-      theme: 'colored',
-    });
-  }
+import { HomePage } from '../../pages/Home/HomePage';
+import { RegisterPage } from '../../pages/Register/RegisterPage';
+import { LoginPage } from '../../pages/Login/LoginPage';
+import { ContactsPage } from '../../pages/Contacts/ContactsPage';
 
-  return (
-    <div className={css.wrapper}>
-      {loading && (
-        <Dna
-          visible={true}
-          height="150"
-          width="150"
-          ariaLabel="dna-loading"
-          wrapperStyle={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
+export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
+          }
         />
-      )}
-      <h1>Phonebook</h1>
-      <Form />
-      <h1>Contacts</h1>
-      <div className={css.contactsWrapper}>
-        <Filter />
-        <ContactsList />
-      </div>
-      <ToastContainer position="top-center" autoClose={3000} />
-    </div>
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
-}
+};
+
+//MY OLD APP
+
+// import { Route, Routes } from 'react-router-dom';
+// import { Layout } from '../Layout/Layout';
+
+// import css from './App.module.css';
+// import { HomePage } from '../../pages/Home/HomePage';
+// import { RegisterPage } from '../../pages/Register/RegisterPage';
+// import { LoginPage } from '../../pages/Login/LoginPage';
+// import { ContactsPage } from '../../pages/Contacts/ContactsPage';
+
+// export function App() {
+//   return (
+//     <div className={css.wrapper}>
+//       <Routes>
+//         <Route path="/" element={<Layout />}>
+//           <Route index element={<HomePage />} />
+//           <Route path="/register" element={<RegisterPage />} />
+//           <Route path="/login" element={<LoginPage />} />
+//           <Route path="/contacts" element={<ContactsPage />} />
+//         </Route>
+//       </Routes>
+//     </div>
+//   );
+// }
