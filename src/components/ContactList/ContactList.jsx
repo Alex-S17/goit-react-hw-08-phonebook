@@ -5,12 +5,16 @@ import { ContactItem } from '../ContactItem/ContactItem';
 import css from './ContactsList.module.css';
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operations';
+import {
+  selectContactsFilter,
+  selectContactsData,
+} from '../../redux/contacts/selectors';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(selectContactsFilter);
 
-  const contactsFromStore = useSelector(state => state.contacts.data);
+  const contactsFromStore = useSelector(selectContactsData);
 
   useEffect(() => {
     dispatch(fetchContacts());

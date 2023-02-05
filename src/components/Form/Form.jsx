@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { addContact } from '../../redux/operations';
 import { addContact } from '../../redux/contacts/operations';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from './Form.module.css';
+import { selectContactsData } from '../../redux/contacts/selectors';
 
 export function Form() {
   const [name, setName] = useState('');
@@ -17,7 +18,7 @@ export function Form() {
     setNumber(event.currentTarget.value);
   };
 
-  const contactsFromStore = useSelector(state => state.contacts.data);
+  const contactsFromStore = useSelector(selectContactsData);
   const dispatch = useDispatch();
 
   const handleFormData = (newName, newNumber) => {
@@ -30,18 +31,18 @@ export function Form() {
       const newContact = {
         // id: nanoid(),
         name: newName,
-        phone: newNumber,
+        number: newNumber,
       };
       dispatch(addContact(newContact));
       return true;
     }
-    return alert(`${newName} is already in contacts`);
+    // return alert(`${newName} is already in contacts`);
 
-    // toast.info(`${newName} is already in contacts`, {
-    //   position: 'top-center',
-    //   autoClose: 3000,
-    //   theme: 'colored',
-    // });
+    toast.info(`${newName} is already in contacts`, {
+      position: 'top-center',
+      autoClose: 3000,
+      theme: 'colored',
+    });
   };
 
   const handleFormSubmit = event => {
@@ -90,7 +91,7 @@ export function Form() {
           Add contact
         </button>
       </form>
-      {/* <ToastContainer position="top-center" autoClose={3000} /> */}
+      <ToastContainer position="top-center" autoClose={3000} />
     </>
   );
 }

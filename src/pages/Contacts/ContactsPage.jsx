@@ -8,10 +8,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
 import css from './ContactsPage.module.css';
+import {
+  selectIsLoading,
+  selectContactsError,
+} from '../../redux/contacts/selectors';
 
-export function ContactsPage() {
-  const loading = useSelector(state => state.contacts.isLoading);
-  const error = useSelector(state => state.contacts.error);
+export default function ContactsPage() {
+  const loading = useSelector(selectIsLoading);
+  const error = useSelector(selectContactsError);
 
   if (error) {
     toast.error(`There is the error "${error}". Please, try again later`, {

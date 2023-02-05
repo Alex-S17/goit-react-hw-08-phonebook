@@ -1,11 +1,7 @@
-// export const RegisterPage = () => {
-//   return <p>This is RegisterPage</p>;
-// };
-
 // import { Helmet } from 'react-helmet';
 import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
 
-export const RegisterPage = () => {
+export default function RegisterPage() {
   return (
     <div>
       {/* <Helmet>
@@ -14,4 +10,4 @@ export const RegisterPage = () => {
       <RegisterForm />
     </div>
   );
-};
+}
