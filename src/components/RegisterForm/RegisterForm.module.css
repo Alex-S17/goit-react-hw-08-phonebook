@@ -38,20 +38,16 @@
 }
 
 .registerBtn {
-background-color: #dad0d0;
-  border: 1px solid #afadad;
-  border-radius: 5px;
-  box-shadow: 0 3px 8px rgb(0 0 0 / 24%);
-  
-    font-size: 18px;
-      font-weight: 600;
-      /* color: #85653a; */
-        color: #6b655d;
-
-  
+  width: 130px;
   margin-top: 30px;
   padding: 8px;
-  width: 130px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6b655d;
+  background-color: #dad0d0;
+  border: 1px solid #afadad;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 24%);     
 }
 
 .registerBtn:hover {

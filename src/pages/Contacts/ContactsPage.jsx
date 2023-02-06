@@ -1,5 +1,3 @@
-// import { Route, Routes } from 'react-router-dom';
-
 import { ContactsList } from '../../components/ContactList/ContactList';
 import { Form } from '../../components/Form/Form';
 import { Filter } from '../../components/Filter/Filter';
@@ -7,11 +5,11 @@ import { Dna } from 'react-loader-spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux';
-import css from './ContactsPage.module.css';
 import {
   selectIsLoading,
   selectContactsError,
 } from '../../redux/contacts/selectors';
+import css from './ContactsPage.module.css';
 
 export default function ContactsPage() {
   const loading = useSelector(selectIsLoading);
