@@ -1,18 +1,18 @@
-import { useAuth } from '../../hooks/useAuth';
+// import { useAuth } from '../../hooks/useAuth';
+import css from './HomePage.module.css';
 
 export default function HomePage() {
-  const { isLoggedIn, user } = useAuth();
+  // const { isLoggedIn, user } = useAuth();
   return (
-    <div>
-      <h1>Welcome to our PhoneBook service!</h1>
-      {!isLoggedIn ? (
-        <div>
-          <p>Please log In to start</p>
-          <p>If you have no account yet you need to register first</p>
-        </div>
-      ) : (
-        <p>Now you are logged in as {user.name}</p>
-      )}
+    <div className={css.greetingWrapper}>
+      <h1 className={css.greetingHeader}>
+        Welcome to our PhoneBook application!
+      </h1>
+      <h2 className={css.greetingText}>
+        Stop for a minute and take some rest,
+        <br />
+        looking at the contacts of your friends and familiar people
+      </h2>
     </div>
   );
 }

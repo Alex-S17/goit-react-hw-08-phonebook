@@ -5,5 +5,27 @@
 }
 
 .username {
-  font-weight: 700;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(28, 223, 28);
 }
+
+.logoutBtn {
+  display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    /* color: #2a363b; */
+    color: aqua;
+      background-color: rgba(250, 235, 215, 0.0);
+      border: none;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus {
+  cursor: pointer;
+  color: #e84a5f;
+}
+

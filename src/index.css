@@ -9,12 +9,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   
-
-
-
+background-color: antiquewhite;
+background-image: url(./images/beach-gece0b1697_1280.jpg);
+background-repeat: repeat-y;
+background-size: 100% 100vh;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+

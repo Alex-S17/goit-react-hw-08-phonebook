@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { register, logIn, logOut, refreshUser } from './operations';
+import storage from 'redux-persist/lib/storage';
+
 const authSlice = createSlice({
   name: 'auth',
   
@@ -47,10 +49,17 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
-        console.log('Refreshing denied.', action.payload);
+        // console.log('Refreshing denied.', action.payload);
       });
   },
 });
+
+// Persisting token field from auth slice to localstorage
+export const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const authReducer = authSlice.reducer;
 

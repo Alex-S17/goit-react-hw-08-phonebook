@@ -1,9 +1,59 @@
+.registrFormWrapper {
+  display: flex;
+  justify-content: center;  
+}
+
+.registrHeader {
+  margin: 10 0;
+  text-align: center;
+  font-size: 24px;
+  color: antiquewhite;
+}
+
 .form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 320px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(250, 235, 215, 0.5);
+  border-radius: 5px;
 }
 
 .label {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
+  font-size: 21px;
+  font-weight: 600;
+  /* color: antiquewhite; */
+    color: #6b655d;
+}
+
+.registrInput {
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 19px;
+}
+
+.registerBtn {
+background-color: #dad0d0;
+  border: 1px solid #afadad;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 24%);
+  
+    font-size: 18px;
+      font-weight: 600;
+      /* color: #85653a; */
+        color: #6b655d;
+
+  
+  margin-top: 30px;
+  padding: 8px;
+  width: 130px;
+}
+
+.registerBtn:hover {
+  cursor: pointer;
 }
